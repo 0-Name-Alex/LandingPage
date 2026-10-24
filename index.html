@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Link Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#070d20; --bg2:#0b1430; --surface:#0f1b3f; --surface2:#142350;
+  --ink:#e8edfb; --muted:#8c9bc4; --line:#1d2d5e; --line2:#2b407f;
+  --accent:#e2c275; --accent-ink:#241a00; --blue:#6f9bff; --danger:#ff8f85;
+  --head:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:5rem}
+body{margin:0;color:var(--ink);font:16px/1.6 var(--body);
+  background:
+    linear-gradient(rgba(111,155,255,.045) 1px,transparent 1px) 0 0/40px 40px,
+    linear-gradient(90deg,rgba(111,155,255,.045) 1px,transparent 1px) 0 0/40px 40px,
+    radial-gradient(1000px 500px at 80% -10%,#14275e 0%,transparent 70%),
+    var(--bg);
+  background-attachment:fixed;min-height:100vh}
+a{color:inherit}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem clamp(1rem,4vw,3rem);
+  border-bottom:1px solid var(--line);background:rgba(7,13,32,.82);backdrop-filter:blur(8px);position:sticky;top:0;z-index:4}
+.brand{font:700 1.05rem var(--head);letter-spacing:-.01em;display:flex;align-items:center;gap:.5rem}
+.brand .mark{color:var(--accent)}
+.brand .dim{color:var(--muted);font-weight:500}
+.hdr-actions{display:flex;align-items:center;gap:.6rem}
+button,input,select{font:inherit;color:inherit}
+.btn{border:1px solid var(--line2);background:var(--surface);padding:.45rem .9rem;border-radius:6px;cursor:pointer;
+  font:500 .85rem var(--head);transition:border-color .15s,background .15s}
+.btn:hover{border-color:var(--accent);background:var(--surface2)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}
+.btn.primary:hover{background:#efd18b}
+.btn.danger{color:var(--danger);border-color:rgba(255,143,133,.4);background:transparent}
+.btn.danger:hover{background:rgba(255,143,133,.12);border-color:var(--danger)}
+.btn.small{padding:.2rem .6rem;font-size:.75rem}
+.btn:disabled{opacity:.5;cursor:wait}
+main{max-width:980px;margin:0 auto;padding:3rem clamp(1rem,4vw,3rem) 5rem}
+h1{font:800 clamp(2rem,6vw,3.3rem)/1.08 var(--head);letter-spacing:-.04em;margin:0 0 .6rem}
+.sub{color:var(--muted);margin:0 0 2rem;max-width:52ch}
+.cursor{display:inline-block;width:.55ch;height:.95em;background:var(--accent);margin-left:.15em;vertical-align:-.1em;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.prompt{display:flex;align-items:center;gap:.7rem;max-width:460px;background:var(--bg2);border:1px solid var(--line2);
+  border-radius:8px;padding:0 .9rem;transition:border-color .15s,box-shadow .15s}
+.prompt:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(226,194,117,.15)}
+.prompt span{color:var(--accent);font:700 1rem var(--head)}
+.search{flex:1;background:transparent;border:0;padding:.75rem 0;font:400 .92rem var(--head);outline:none;color:var(--ink)}
+.search::placeholder{color:var(--muted)}
+.cat{margin-top:2.6rem}
+.cat h2{font:700 .95rem var(--head);margin:0 0 .5rem;color:var(--blue);display:flex;align-items:center;gap:.6rem}
+.cat h2::before{content:"//";color:var(--line2)}
+.cat h2 .n{margin-left:auto;color:var(--muted);font-weight:500;font-size:.8rem}
+.list{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:rgba(15,27,63,.55)}
+.item{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 1.1rem;border-top:1px solid var(--line);
+  border-left:3px solid transparent;transition:background .15s,border-color .15s}
+.item:first-child{border-top:0}
+.item:hover{background:var(--surface2);border-left-color:var(--accent)}
+.item a.link{flex:1;text-decoration:none;min-width:0}
+.t{font-weight:600;display:block}
+.item:hover .t{color:var(--accent)}
+.d{color:var(--muted);font-size:.9rem;display:block;overflow:hidden;text-overflow:ellipsis}
+.host{font:400 .75rem var(--head);color:var(--muted);flex-shrink:0;max-width:30%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.actions{display:flex;gap:.4rem;flex-shrink:0}
+.empty{color:var(--muted);padding:2.5rem 0;font-family:var(--head);font-size:.9rem}
+.panel{background:var(--surface);border:1px solid var(--line2);border-radius:10px;padding:1.3rem;margin:0 0 2rem;
+  box-shadow:0 20px 50px -25px rgba(0,0,0,.7)}
+.panel h3{margin:0 0 1rem;font:700 1rem var(--head);color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.9rem}
+label{display:block;font:500 .78rem var(--head);color:var(--muted);margin-bottom:.3rem}
+.field input{width:100%;padding:.6rem .75rem;border:1px solid var(--line2);border-radius:6px;background:var(--bg2);outline:none}
+.field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(226,194,117,.15)}
+.row{display:flex;gap:.6rem;margin-top:1.1rem;flex-wrap:wrap}
+.note{font-size:.85rem;color:var(--muted);margin:.9rem 0 0}
+.note code{font-family:var(--head);background:var(--bg2);border:1px solid var(--line);padding:.05rem .35rem;border-radius:4px;font-size:.8rem;color:var(--ink)}
+#toast{position:fixed;left:50%;bottom:1.5rem;transform:translateX(-50%);background:var(--surface2);color:var(--ink);border:1px solid var(--accent);
+  padding:.7rem 1.1rem;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;z-index:5;font-size:.9rem}
+#toast.show{opacity:1}
+#toast.err{border-color:var(--danger);color:var(--danger)}
+.hidden{display:none!important}
+.badge{font:700 .7rem var(--head);color:var(--accent);border:1px solid var(--accent);padding:.15rem .5rem;border-radius:99px}
+@media (max-width:620px){.host{display:none}.item{padding:.8rem}}
+@media (prefers-reduced-motion:reduce){#toast,.btn,.item{transition:none}.cursor{animation:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand"><span class="mark">&gt;_</span>linkhub<span class="dim">/</span></div>
+  <div class="hdr-actions">
+    <span id="adminBadge" class="badge hidden">root</span>
+    <button id="loginBtn" class="btn">sudo login</button>
+    <button id="logoutBtn" class="btn hidden">logout</button>
+  </div>
+</header>
+
+<main>
+  <h1>Dev links,<br>one query away<span class="cursor" aria-hidden="true"></span></h1>
+  <p class="sub">Docs, tools and references, organised and searchable.</p>
+
+  <!-- Login panel -->
+  <section id="loginPanel" class="panel hidden">
+    <h3>Admin login</h3>
+    <div class="grid">
+      <div class="field">
+        <label for="tokenInput">GitHub access token</label>
+        <input id="tokenInput" type="password" autocomplete="off" placeholder="github_pat_…">
+      </div>
+    </div>
+    <div class="row">
+      <button id="loginSubmit" class="btn primary">Log in</button>
+      <button id="loginCancel" class="btn">Cancel</button>
+    </div>
+    <p class="note">Create a fine-grained token on GitHub with access to <strong>only this repository</strong> and
+      <code>Contents: Read and write</code>. The token stays in this browser tab and is cleared when you close it.</p>
+  </section>
+
+  <!-- Editor panel -->
+  <section id="editor" class="panel hidden">
+    <h3 id="editorTitle">Add a link</h3>
+    <div class="grid">
+      <div class="field"><label for="fTitle">Title</label><input id="fTitle" maxlength="80"></div>
+      <div class="field"><label for="fUrl">URL</label><input id="fUrl" type="url" placeholder="https://"></div>
+      <div class="field"><label for="fCat">Category</label><input id="fCat" list="cats" maxlength="40" placeholder="General"><datalist id="cats"></datalist></div>
+      <div class="field"><label for="fDesc">Description (optional)</label><input id="fDesc" maxlength="140"></div>
+    </div>
+    <div class="row">
+      <button id="saveLink" class="btn primary">Add link</button>
+      <button id="cancelEdit" class="btn hidden">Cancel edit</button>
+    </div>
+  </section>
+
+  <label class="prompt" for="search"><span>$</span><input id="search" class="search" type="search" placeholder="grep links" autocomplete="off"></label>
+  <div id="content"></div>
+</main>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  "use strict";
+
+  // ---------- Repo detection ----------
+  // Works automatically on https://OWNER.github.io/REPO/ and https://OWNER.github.io/.
+  // For a custom domain, set these manually, e.g. { owner: "me", repo: "link-hub", branch: "main" }.
+  const MANUAL = { owner: "", repo: "", branch: "main" };
+  const FILE = "links.json";
+
+  function detectRepo() {
+    if (MANUAL.owner && MANUAL.repo) return MANUAL;
+    const host = location.hostname;
+    if (host.endsWith(".github.io")) {
+      const owner = host.replace(".github.io", "");
+      const first = location.pathname.split("/").filter(Boolean)[0];
+      const repo = first && !first.includes(".") ? first : host;
+      return { owner, repo, branch: MANUAL.branch };
+    }
+    return null;
+  }
+  const REPO = detectRepo();
+
+  // ---------- State ----------
+  let links = [];          // [{id,title,url,category,description}]
+  let token = sessionStorage.getItem("gh_token") || "";
+  let isAdmin = false;
+  let editingId = null;
+  let fileSha = null;
+
+  const $ = id => document.getElementById(id);
+  const toastEl = $("toast");
+  let toastTimer;
+  function toast(msg, err) {
+    toastEl.textContent = msg;
+    toastEl.className = "show" + (err ? " err" : "");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.className = "", 3500);
+  }
+
+  // ---------- Helpers ----------
+  function safeUrl(u) {
+    try {
+      const p = new URL(u);
+      return ["http:", "https:", "mailto:"].includes(p.protocol) ? p.href : null;
+    } catch { return null; }
+  }
+  const api = path => `https://api.github.com/repos/${REPO.owner}/${REPO.repo}/contents/${path}`;
+  const authHeaders = () => ({
+    "Accept": "application/vnd.github+json",
+    "Authorization": "Bearer " + token
+  });
+  const b64enc = s => btoa(unescape(encodeURIComponent(s)));
+  const b64dec = s => decodeURIComponent(escape(atob(s.replace(/\n/g, ""))));
+
+  // ---------- Load links ----------
+  async function loadLinks() {
+    try {
+      const r = await fetch(FILE + "?t=" + Date.now(), { cache: "no-store" });
+      if (!r.ok) throw new Error("not found");
+      const data = await r.json();
+      links = Array.isArray(data.links) ? data.links : [];
+    } catch {
+      links = [];
+    }
+    render();
+  }
+
+  // ---------- Render ----------
+  function el(tag, props = {}, ...kids) {
+    const n = document.createElement(tag);
+    Object.assign(n, props);
+    kids.forEach(k => n.append(k));
+    return n;
+  }
+
+  function render() {
+    const q = $("search").value.trim().toLowerCase();
+    const box = $("content");
+    box.replaceChildren();
+
+    const shown = links.filter(l =>
+      !q || (l.title + " " + l.description + " " + l.category).toLowerCase().includes(q));
+
+    if (!shown.length) {
+      box.append(el("p", { className: "empty", textContent: links.length
+        ? "No links match your search."
+        : (isAdmin ? "No links yet. Add your first one above." : "No links have been added yet.") }));
+    }
+
+    const groups = {};
+    shown.forEach(l => (groups[l.category || "General"] ||= []).push(l));
+
+    Object.keys(groups).sort((a, b) => a.localeCompare(b)).forEach(cat => {
+      const sec = el("section", { className: "cat" }, el("h2", { textContent: cat }, el("span", { className: "n", textContent: groups[cat].length + (groups[cat].length === 1 ? " link" : " links") })));
+      const ul = el("ul", { className: "list" });
+      groups[cat].forEach(l => {
+        const href = safeUrl(l.url);
+        const a = el("a", { className: "link", href: href || "#", target: "_blank", rel: "noopener noreferrer" },
+          el("span", { className: "t", textContent: l.title }));
+        if (l.description) a.append(el("span", { className: "d", textContent: l.description }));
+        const li = el("li", { className: "item" }, a);
+        if (href) { try { li.append(el("span", { className: "host", textContent: new URL(href).hostname.replace(/^www\./, "") })); } catch {} }
+        if (isAdmin) {
+          const edit = el("button", { className: "btn small", textContent: "Edit" });
+          edit.onclick = () => startEdit(l.id);
+          const del = el("button", { className: "btn small danger", textContent: "Delete" });
+          del.onclick = () => removeLink(l.id);
+          li.append(el("div", { className: "actions" }, edit, del));
+        }
+        ul.append(li);
+      });
+      sec.append(ul);
+      box.append(sec);
+    });
+
+    const dl = $("cats");
+    dl.replaceChildren();
+    [...new Set(links.map(l => l.category || "General"))].forEach(c => dl.append(el("option", { value: c })));
+  }
+
+  // ---------- Saving to GitHub ----------
+  async function commit(newLinks, message) {
+    // Always fetch the latest SHA to avoid conflicts
+    const cur = await fetch(api(FILE) + "?ref=" + REPO.branch, { headers: authHeaders() });
+    let sha;
+    if (cur.status === 200) sha = (await cur.json()).sha;
+    else if (cur.status !== 404) throw new Error("Could not read " + FILE + " (" + cur.status + ")");
+
+    const body = {
+      message,
+      branch: REPO.branch,
+      content: b64enc(JSON.stringify({ links: newLinks }, null, 2) + "\n")
+    };
+    if (sha) body.sha = sha;
+
+    const r = await fetch(api(FILE), {
+      method: "PUT",
+      headers: { ...authHeaders(), "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+    if (!r.ok) {
+      const e = await r.json().catch(() => ({}));
+      throw new Error(e.message || "Save failed (" + r.status + ")");
+    }
+    links = newLinks;
+    render();
+  }
+
+  async function save(newLinks, message, okMsg) {
+    try {
+      await commit(newLinks, message);
+      toast(okMsg + " Visitors will see it in about a minute.");
+    } catch (e) {
+      toast(e.message, true);
+    }
+  }
+
+  // ---------- Admin actions ----------
+  function resetEditor() {
+    editingId = null;
+    ["fTitle", "fUrl", "fCat", "fDesc"].forEach(i => $(i).value = "");
+    $("editorTitle").textContent = "Add a link";
+    $("saveLink").textContent = "Add link";
+    $("cancelEdit").classList.add("hidden");
+  }
+
+  function startEdit(id) {
+    const l = links.find(x => x.id === id);
+    if (!l) return;
+    editingId = id;
+    $("fTitle").value = l.title; $("fUrl").value = l.url;
+    $("fCat").value = l.category || ""; $("fDesc").value = l.description || "";
+    $("editorTitle").textContent = "Edit link";
+    $("saveLink").textContent = "Save changes";
+    $("cancelEdit").classList.remove("hidden");
+    $("editor").scrollIntoView({ behavior: "smooth" });
+    $("fTitle").focus();
+  }
+
+  async function submitLink() {
+    const title = $("fTitle").value.trim();
+    let url = $("fUrl").value.trim();
+    if (url && !/^[a-z][a-z0-9+.-]*:/i.test(url)) url = "https://" + url;
+    const clean = safeUrl(url);
+    if (!title) return toast("Enter a title.", true);
+    if (!clean) return toast("Enter a valid web address starting with http or https.", true);
+
+    const entry = {
+      id: editingId || (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())),
+      title, url: clean,
+      category: $("fCat").value.trim() || "General",
+      description: $("fDesc").value.trim()
+    };
+    const next = editingId
+      ? links.map(l => l.id === editingId ? entry : l)
+      : [...links, entry];
+
+    $("saveLink").disabled = true;
+    await save(next, (editingId ? "Update link: " : "Add link: ") + title, editingId ? "Link updated." : "Link added.");
+    $("saveLink").disabled = false;
+    resetEditor();
+  }
+
+  async function removeLink(id) {
+    const l = links.find(x => x.id === id);
+    if (!l || !confirm(`Delete "${l.title}"?`)) return;
+    await save(links.filter(x => x.id !== id), "Delete link: " + l.title, "Link deleted.");
+  }
+
+  // ---------- Login ----------
+  function setAdmin(on) {
+    isAdmin = on;
+    $("adminBadge").classList.toggle("hidden", !on);
+    $("logoutBtn").classList.toggle("hidden", !on);
+    $("loginBtn").classList.toggle("hidden", on);
+    $("editor").classList.toggle("hidden", !on);
+    $("loginPanel").classList.add("hidden");
+    if (!on) resetEditor();
+    render();
+  }
+
+  async function verifyToken() {
+    if (!REPO) { toast("Could not detect the repository. Set owner and repo in the MANUAL settings in index.html.", true); return false; }
+    try {
+      const r = await fetch(`https://api.github.com/repos/${REPO.owner}/${REPO.repo}`, { headers: authHeaders() });
+      if (!r.ok) throw new Error(r.status === 401 ? "That token was not accepted." : "Could not access this repository with that token.");
+      const info = await r.json();
+      if (!info.permissions || !info.permissions.push) throw new Error("This token cannot write to the repository.");
+      return true;
+    } catch (e) {
+      toast(e.message, true);
+      return false;
+    }
+  }
+
+  $("loginBtn").onclick = () => { $("loginPanel").classList.remove("hidden"); $("tokenInput").focus(); };
+  $("loginCancel").onclick = () => $("loginPanel").classList.add("hidden");
+  $("loginSubmit").onclick = async () => {
+    token = $("tokenInput").value.trim();
+    if (!token) return toast("Paste your access token.", true);
+    $("loginSubmit").disabled = true;
+    if (await verifyToken()) {
+      sessionStorage.setItem("gh_token", token);
+      $("tokenInput").value = "";
+      setAdmin(true);
+      toast("Logged in.");
+    } else token = "";
+    $("loginSubmit").disabled = false;
+  };
+  $("tokenInput").addEventListener("keydown", e => { if (e.key === "Enter") $("loginSubmit").click(); });
+  $("logoutBtn").onclick = () => { sessionStorage.removeItem("gh_token"); token = ""; setAdmin(false); toast("Logged out."); };
+
+  $("saveLink").onclick = submitLink;
+  $("cancelEdit").onclick = resetEditor;
+  $("search").addEventListener("input", render);
+
+  // ---------- Init ----------
+  loadLinks();
+  if (token) verifyToken().then(ok => { if (ok) setAdmin(true); else { sessionStorage.removeItem("gh_token"); token = ""; } });
+})();
+</script>
+</body>
+</html>

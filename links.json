@@ -1,0 +1,11 @@
+{
+  "links": [
+    {
+      "id": "sample-1",
+      "title": "GitHub Pages documentation",
+      "url": "https://docs.github.com/en/pages",
+      "category": "Getting started",
+      "description": "How this site is hosted"
+    }
+  ]
+}
