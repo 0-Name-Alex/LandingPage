@@ -1,18 +1,53 @@
 {
   "links": [
     {
-      "id": "Portfolio",
-      "title": "My portfolio",
-      "url": "https://github-portfolio-five-dun.vercel.app/",
-      "category": "Self",
-      "description": "About me"
+      "id": "linkedin",
+      "title": "Dhayananth J | LinkedIn",
+      "url": "https://www.linkedin.com/in/dhayananthj/",
+      "category": "Connect & Profiles",
+      "description": "Professional profile & networking"
     },
     {
-      "id": "sample-1",
-      "title": "GitHub Pages documentation",
-      "url": "https://docs.github.com/en/pages",
-      "category": "Getting started",
-      "description": "How this site is hosted"
+      "id": "portfolio",
+      "title": "Portfolio Website",
+      "url": "https://github-portfolio-five-dun.vercel.app/",
+      "category": "Connect & Profiles",
+      "description": "My projects & work portfolio hosted on Vercel"
+    },
+    {
+      "id": "github",
+      "title": "GitHub Profile",
+      "url": "https://github.com/0-Name-Alex",
+      "category": "Connect & Profiles",
+      "description": "Open-source repositories & code"
+    },
+    {
+      "id": "dahb-simulator",
+      "title": "DAHB Bidirectional Converter Current-Path Simulator",
+      "url": "https://sites.google.com/view/bidir-simulation--high-gain/full-page-embed",
+      "category": "Simulations & Research",
+      "description": "Dual Active Half Bridge bidirectional converter interactive current-path simulator"
+    },
+    {
+      "id": "svpwm-simulator",
+      "title": "SVPWM & Clarke Transformation Visualizer",
+      "url": "https://sites.google.com/view/svpwm-clarke-transformation-vi/full-page-embed",
+      "category": "Simulations & Research",
+      "description": "Interactive Space Vector PWM & Clarke Transformation simulation tool"
+    },
+    {
+      "id": "taskhub",
+      "title": "TaskHub",
+      "url": "https://github.com/0-Name-Alex/TaskHub",
+      "category": "Projects",
+      "description": "Local-first Windows to-do, reminder & laptop automation hub (.NET 10 / WPF)"
+    },
+    {
+      "id": "spigen-audio",
+      "title": "Spigen Audio CTRL Windows",
+      "url": "https://github.com/0-Name-Alex/Spigen-Audio-CTRL-Windows",
+      "category": "Projects",
+      "description": "Windows BLE controller for Spigen SA-HP P10 headphones (Python)"
     }
   ]
 }
