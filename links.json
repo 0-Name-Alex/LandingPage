@@ -22,32 +22,53 @@
       "description": "Open-source repositories & code"
     },
     {
+      "id": "wind-turbine-twin",
+      "title": "Wind Turbine Hybrid Digital Twin",
+      "url": "https://github.com/0-Name-Alex/Wind-Turbine-Hybrid-Digital-Twin",
+      "category": "Energy & AI Research",
+      "description": "Physics-Informed ML Digital Twin & 3D Dashboard (Python, Streamlit, MATLAB)"
+    },
+    {
       "id": "dahb-simulator",
       "title": "DAHB Bidirectional Converter Current-Path Simulator",
       "url": "https://sites.google.com/view/bidir-simulation--high-gain/full-page-embed",
-      "category": "Simulations & Research",
+      "category": "Energy & AI Research",
       "description": "Dual Active Half Bridge bidirectional converter interactive current-path simulator"
     },
     {
       "id": "svpwm-simulator",
       "title": "SVPWM & Clarke Transformation Visualizer",
       "url": "https://sites.google.com/view/svpwm-clarke-transformation-vi/full-page-embed",
-      "category": "Simulations & Research",
+      "category": "Energy & AI Research",
       "description": "Interactive Space Vector PWM & Clarke Transformation simulation tool"
     },
     {
       "id": "taskhub",
       "title": "TaskHub",
       "url": "https://github.com/0-Name-Alex/TaskHub",
-      "category": "Projects",
-      "description": "Local-first Windows to-do, reminder & laptop automation hub (.NET 10 / WPF)"
+      "category": "Software & Hardware Projects",
+      "description": "Local-first Windows task manager, reminder & laptop automation hub (.NET 10 / WPF)"
+    },
+    {
+      "id": "taskhub-greeter",
+      "title": "TaskHub Greeter",
+      "url": "https://github.com/0-Name-Alex/TaskHubGreeter",
+      "category": "Software & Hardware Projects",
+      "description": "Wake, unlock, and sign-in companion desktop app for TaskHub"
     },
     {
       "id": "spigen-audio",
       "title": "Spigen Audio CTRL Windows",
       "url": "https://github.com/0-Name-Alex/Spigen-Audio-CTRL-Windows",
-      "category": "Projects",
+      "category": "Software & Hardware Projects",
       "description": "Windows BLE controller for Spigen SA-HP P10 headphones (Python)"
+    },
+    {
+      "id": "macropad-8051",
+      "title": "8051 Mechanical Macro Pad PCB",
+      "url": "https://github.com/0-Name-Alex/8051-Mechanical-MacroPad",
+      "category": "Software & Hardware Projects",
+      "description": "Custom mechanical macro keypad PCB engineered in KiCad around the 8051 MCU"
     }
   ]
 }
