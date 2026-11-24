@@ -22,13 +22,6 @@
       "description": "Open-source repositories & engineering code"
     },
     {
-      "id": "in14-bess-frequency",
-      "title": "IN-14 BESS Frequency Regulation (PSS®E & PSO)",
-      "url": "https://github.com/0-Name-Alex/IN14-BESS-frequency",
-      "category": "Energy & AI Research",
-      "description": "Optimal BESS placement & sizing for grid frequency regulation on 14-bus 220kV Indian grid"
-    },
-    {
       "id": "wind-turbine-twin",
       "title": "Wind Turbine Hybrid Digital Twin",
       "url": "https://github.com/0-Name-Alex/Wind-Turbine-Hybrid-Digital-Twin",
