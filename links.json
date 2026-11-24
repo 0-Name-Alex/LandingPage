@@ -50,6 +50,13 @@
       "description": "Interactive Space Vector PWM & Clarke Transformation simulation tool"
     },
     {
+      "id": "fileforge",
+      "title": "FileForge",
+      "url": "https://github.com/0-Name-Alex/FileForge",
+      "category": "Software & Hardware Projects",
+      "description": "Ultra-fast, low-memory universal file converter & PDF power tools for Windows 11 (.NET 10 / WPF / Python)"
+    },
+    {
       "id": "taskhub",
       "title": "TaskHub",
       "url": "https://github.com/0-Name-Alex/TaskHub",
