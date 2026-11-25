@@ -97,6 +97,13 @@
       "url": "https://github.com/0-Name-Alex/8051-Mechanical-MacroPad",
       "category": "Software & Hardware Projects",
       "description": "Custom mechanical macro keypad PCB engineered in KiCad around the 8051 MCU"
+    },
+    {
+      "id": "magsense-current-mapper",
+      "title": "MagSense — Multi-Core Current Mapper",
+      "url": "https://github.com/0-Name-Alex/MagSense-Current-Mapper",
+      "category": "Energy & AI Research",
+      "description": "Non-invasive magnetic sensor array for mapping individual conductor currents in multi-core cables using calibration-based inverse solving (Python, MATLAB, Hall-effect, ESP32)"
     }
   ]
 }
