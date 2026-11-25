@@ -50,6 +50,13 @@
       "description": "Interactive Space Vector PWM & Clarke Transformation simulation tool"
     },
     {
+      "id": "arduinoblocks-studio",
+      "title": "ArduinoBlocks Studio (Web IDE)",
+      "url": "https://0-name-alex.github.io/ArduinoBlocks-Studio/",
+      "category": "Software & Hardware Projects",
+      "description": "Visual Blockly IDE generating Arduino C++ & platformio.ini across Uno, Mega, ESP32, ESP8266, XIAO & Pico with Web Serial Monitor"
+    },
+    {
       "id": "lifeline",
       "title": "LifeLine — Smart Safety Jacket & Edge AI",
       "url": "https://github.com/0-Name-Alex/LifeLine",
