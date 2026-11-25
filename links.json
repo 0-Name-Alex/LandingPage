@@ -50,6 +50,13 @@
       "description": "Interactive Space Vector PWM & Clarke Transformation simulation tool"
     },
     {
+      "id": "lifeline",
+      "title": "LifeLine — Smart Safety Jacket & Edge AI",
+      "url": "https://github.com/0-Name-Alex/LifeLine",
+      "category": "Software & Hardware Projects",
+      "description": "ESP32 smart safety wearable (100 Hz fall detection, MAX30102, MQ gas) + Raspberry Pi ML risk scoring & Flask dashboard"
+    },
+    {
       "id": "fileforge",
       "title": "FileForge",
       "url": "https://github.com/0-Name-Alex/FileForge",
