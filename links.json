@@ -104,6 +104,13 @@
       "url": "https://github.com/0-Name-Alex/MagSense-Current-Mapper",
       "category": "Energy & AI Research",
       "description": "Non-invasive magnetic sensor array for mapping individual conductor currents in multi-core cables using calibration-based inverse solving (Python, MATLAB, Hall-effect, ESP32)"
+    },
+    {
+      "id": "schemcraft-studio",
+      "title": "SchemCraft Studio — AI Circuit & Block Diagram Studio",
+      "url": "https://github.com/0-Name-Alex/SchemCraft-Studio",
+      "category": "Software & Hardware Projects",
+      "description": "AI-interactive circuit schematic, block diagram & image studio with clarifying Q&A, spatial point/area marking for targeted edits, ERC/BOM, KiCad & 300-DPI IEEE PDF export (Python, FastAPI, Gemini/OpenAI/Ollama)"
     }
   ]
 }
